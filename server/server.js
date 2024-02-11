@@ -13,6 +13,10 @@ app.use('/', express.static('public'));
 
 const data = fs.readFileSync('budget.json', 'utf8');
 
+app.use(cors({
+    origin: '*'
+}));
+
 app.get('/budget', (req, res) => {
     res.send(data);
 });
@@ -20,3 +24,4 @@ app.get('/budget', (req, res) => {
 app.listen(port, () => {
     console.log(`API served at http://localhost:${port}`);
 });
+
